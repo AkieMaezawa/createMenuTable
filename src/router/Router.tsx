@@ -8,30 +8,32 @@ import { MenuTable } from "../components/pages/MenuTable";
 
 import { HomeRoutes } from "./HomeRoutes";
 import { HeaderLayout } from "../templetes/HeaderLayout";
-// import { LoginUserProvider } from "../providers/LoginUserProvider";
+import { LoginUserProvider } from "../providers/LoginUserProvider";
 
 export const Router: VFC = memo(() => {
   return (
-    <Routes>
-      <Route path="/" element={<Login />} />
-      <Route path="/menu_table" element={<Home />}>
-        <Route
-          index
-          element={
-            <HeaderLayout>
-              <MenuTable />
-            </HeaderLayout>
-          }
-        />
-        {HomeRoutes.map((route) => (
+    <LoginUserProvider>
+      <Routes>
+        <Route path="/" element={<Login />} />
+        <Route path="/menu_table" element={<Home />}>
           <Route
-            key={route.path}
-            path={route.path}
-            element={<HeaderLayout>{route.children}</HeaderLayout>}
+            index
+            element={
+              <HeaderLayout>
+                <MenuTable />
+              </HeaderLayout>
+            }
           />
-        ))}
-      </Route>
-      <Route path="*" element={<Page404 />} />
-    </Routes>
+          {HomeRoutes.map((route) => (
+            <Route
+              key={route.path}
+              path={route.path}
+              element={<HeaderLayout>{route.children}</HeaderLayout>}
+            />
+          ))}
+        </Route>
+        <Route path="*" element={<Page404 />} />
+      </Routes>
+    </LoginUserProvider>
   );
 });

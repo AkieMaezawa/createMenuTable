@@ -1,11 +1,12 @@
 /* eslint-disable react-hooks/exhaustive-deps*/
-import { Flex, Heading, useDisclosure } from "@chakra-ui/react";
+import { Flex, Heading, useDisclosure, Image } from "@chakra-ui/react";
 import { memo, useCallback, VFC } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { MenuIconButton } from "../../atoms/button/MenuIconButton";
 import { NavLink } from "../../atoms/link/NavLink";
 import { MenuDrawer } from "../../molecules/MenuDrawer";
+import logo from "../../img/menuIcon.png";
 
 export const Header: VFC = memo(() => {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -31,7 +32,7 @@ export const Header: VFC = memo(() => {
         color="gray.50"
         align="center"
         justify="space-between"
-        padding={{ base: 3, md: 5 }}
+        padding={{ base: 2, md: 4 }}
       >
         <Flex
           align="center"
@@ -40,7 +41,8 @@ export const Header: VFC = memo(() => {
           _hover={{ cursor: "pointer" }}
           onClick={onClickHome}
         >
-          <Heading as="h1" fontSize={{ base: "md", md: "lg" }}>
+          <Image src={logo} alt="Logo" boxSize="50px" padding={1} />
+          <Heading as="h4" fontSize={{ base: "md", md: "lg" }}>
             献立表作成アプリ
           </Heading>
         </Flex>
