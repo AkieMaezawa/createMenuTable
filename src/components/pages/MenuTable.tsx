@@ -1,11 +1,12 @@
 import { memo, VFC } from "react";
-import { Outlet } from "react-router-dom";
+
+import { WeeklyTextArea } from "../organisms/menuTable/WeeklyTextArea";
+import { Container } from "@chakra-ui/react";
 
 export const MenuTable: VFC = memo(() => {
   return (
-    <>
-      <p>１週間の献立表ページです</p>
-      <Outlet />
-    </>
+    <Container maxW="container.xl">
+      <WeeklyTextArea />
+    </Container>
   );
 });
