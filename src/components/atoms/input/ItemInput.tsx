@@ -1,5 +1,6 @@
-import { Button, Flex, Input } from "@chakra-ui/react";
-import { memo, useState, VFC } from "react";
+import { AddIcon } from "@chakra-ui/icons";
+import { Flex, IconButton, Input } from "@chakra-ui/react";
+import React, { memo, useState, VFC } from "react";
 
 import { Item } from "../../../types/Item";
 
@@ -15,7 +16,7 @@ const ItemInput: VFC<Props> = memo(({ setItems, items }) => {
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInputTitle(e.target.value);
   };
-  const handleSubmit = () => {
+  const handleSubmit = (event: any) => {
     setCount(count + 1);
 
     const newItem: Item = {
@@ -26,20 +27,28 @@ const ItemInput: VFC<Props> = memo(({ setItems, items }) => {
 
     setItems([newItem, ...items]);
     setInputTitle("");
+    event.preventDefault();
   };
 
   return (
-    <Flex pb={4}>
-      <Input
-        value={inputTitle}
-        onChange={handleInputChange}
-        align="center"
-        width="150px"
-      />
-      <Button onClick={handleSubmit} align="center">
-        +
-      </Button>
-    </Flex>
+    <React.Fragment>
+      <form noValidate autoComplete="off" onSubmit={handleSubmit}>
+        <Flex pb={4}>
+          <Input
+            value={inputTitle}
+            onChange={handleInputChange}
+            align="center"
+            width="100%"
+          />
+          <IconButton
+            onClick={handleSubmit}
+            align="center"
+            aria-label="Add to item"
+            icon={<AddIcon />}
+          />
+        </Flex>
+      </form>
+    </React.Fragment>
   );
 });
 

@@ -2,8 +2,7 @@ import { memo, VFC } from "react";
 
 import { Item } from "../../../types/Item";
 import ShoppingItem from "../list/ShoppingItem";
-import classes from "../../../css/AddList.module.scss";
-import { Flex } from "@chakra-ui/react";
+import { Box, List } from "@chakra-ui/react";
 
 type Props = {
   items: Item[];
@@ -22,11 +21,11 @@ const ShoppingList: VFC<Props> = memo(({ items, setItems }) => {
   };
 
   return (
-    <Flex>
+    <Box>
       {items.length <= 0 ? (
-        "登録されたTODOはありません。"
+        "登録された材料はありません。"
       ) : (
-        <ul className={classes.shopping_list}>
+        <List spacing={3}>
           {items.map((item) => (
             <ShoppingItem
               key={item.id}
@@ -35,9 +34,9 @@ const ShoppingList: VFC<Props> = memo(({ items, setItems }) => {
               handleDone={handleDone}
             />
           ))}
-        </ul>
+        </List>
       )}
-    </Flex>
+    </Box>
   );
 });
 

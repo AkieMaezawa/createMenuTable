@@ -1,8 +1,7 @@
-import { Button } from "@chakra-ui/react";
+import { Button, ListItem, Checkbox, Spacer, Stack } from "@chakra-ui/react";
 import { memo, VFC } from "react";
 
 import { Item } from "../../../types/Item";
-import classes from "../../../css/AddList.module.scss";
 
 type Props = {
   item: Item;
@@ -12,21 +11,17 @@ type Props = {
 
 const ShoppingItem: VFC<Props> = memo(({ item, handleDone, handleDelete }) => {
   return (
-    <li>
-      <label className={item.done ? classes.label_done : ""}>
-        <input
-          type="checkbox"
-          className={classes.checkbox_input}
-          onClick={() => handleDone(item)}
-          defaultChecked={item.done}
-        />
-        <span className={classes.checkbox_label}>{item.title}</span>
-      </label>
-
-      <Button colorScheme="red" onClick={() => handleDelete(item)}>
-        削除
-      </Button>
-    </li>
+    <ListItem>
+      <Stack direction={["column", "row"]} spacing="24px">
+        <Checkbox p="4" isChecked={item.done} onChange={() => handleDone(item)}>
+          {item.title}
+        </Checkbox>
+        <Spacer />
+        <Button colorScheme="red" onClick={() => handleDelete(item)}>
+          削除
+        </Button>
+      </Stack>
+    </ListItem>
   );
 });
 
