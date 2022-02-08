@@ -27,12 +27,12 @@ const weektext: Week[] = [
   {
     id: 2,
     text: "火",
-    bg: "teal.50"
+    bg: "red.50"
   },
   {
     id: 3,
     text: "水",
-    bg: ""
+    bg: "blue.50"
   },
   {
     id: 4,
@@ -42,17 +42,17 @@ const weektext: Week[] = [
   {
     id: 5,
     text: "金",
-    bg: ""
+    bg: "yellow.50"
   },
   {
     id: 6,
     text: "土",
-    bg: "teal.50"
+    bg: "cyan.50"
   },
   {
     id: 7,
     text: "日",
-    bg: ""
+    bg: "pink.50"
   }
 ];
 
@@ -82,7 +82,7 @@ export const MenuTable: VFC = memo(() => {
             <TabPanel key={week.id}>
               <WeeklyTextArea />
               <br />
-              <AddList />
+              <AddList title="材料リスト" />
               <br />
               <Button colorScheme="blue" boxShadow="lg">
                 買い物リスト反映

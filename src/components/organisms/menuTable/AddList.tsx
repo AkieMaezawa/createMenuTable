@@ -19,13 +19,18 @@ const initialState: Item[] = [
   }
 ];
 
-export const AddList: VFC = memo(() => {
+type Props = {
+  title: string;
+};
+
+export const AddList: VFC<Props> = memo((props) => {
   const [items, setItems] = useState(initialState);
+  const { title } = props;
 
   return (
     <Box>
       <Text fontSize="lg" color="red.400" fontWeight="bold">
-        材料リスト
+        {title}
       </Text>
       <br />
       <ItemInput setItems={setItems} items={items} />

@@ -11,7 +11,7 @@ type Props = {
 
 const ShoppingItem: VFC<Props> = memo(({ item, handleDone, handleDelete }) => {
   return (
-    <ListItem>
+    <ListItem borderBottom="1px" borderBottomColor="#d7d2cd">
       <Stack direction={["column", "row"]} spacing="24px">
         <Checkbox p="4" isChecked={item.done} onChange={() => handleDone(item)}>
           {item.title}
@@ -20,6 +20,7 @@ const ShoppingItem: VFC<Props> = memo(({ item, handleDone, handleDelete }) => {
         <Button colorScheme="red" onClick={() => handleDelete(item)}>
           削除
         </Button>
+        <br />
       </Stack>
     </ListItem>
   );
