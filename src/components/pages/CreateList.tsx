@@ -8,7 +8,7 @@ export const CreateList: VFC = memo(() => {
   return (
     <Container>
       <Box p={4}>
-        <AddList title="買い物リスト" />
+        <AddList title="買い物リスト作成" />
       </Box>
       <ItemCheck />
     </Container>
