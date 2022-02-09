@@ -9,7 +9,7 @@ type Props = {
   setItems: React.Dispatch<React.SetStateAction<Item[]>>;
 };
 
-const ShoppingList: VFC<Props> = memo(({ items, setItems }) => {
+const EditList: VFC<Props> = memo(({ items, setItems }) => {
   const handleDone = (item: Item) => {
     setItems((prev) =>
       prev.map((t) => (t.id === item.id ? { ...item, done: !item.done } : t))
@@ -40,4 +40,4 @@ const ShoppingList: VFC<Props> = memo(({ items, setItems }) => {
   );
 });
 
-export default ShoppingList;
+export default EditList;

@@ -1,7 +1,13 @@
-import { memo, VFC } from "react";
+import { memo, useCallback, VFC } from "react";
+import { useNavigate } from "react-router-dom";
 import { Box, Heading, Text, Button } from "@chakra-ui/react";
 
 export const Page404: VFC = memo(() => {
+  const navigate = useNavigate();
+  const onClickHome = useCallback(() => {
+    navigate("/");
+  }, [navigate]);
+
   return (
     <Box textAlign="center" py={10} px={6}>
       <Heading
@@ -25,6 +31,7 @@ export const Page404: VFC = memo(() => {
         bgGradient="linear(to-r, teal.400, teal.500, teal.600)"
         color="white"
         variant="solid"
+        onClick={onClickHome}
       >
         Go to Home
       </Button>

@@ -4,7 +4,7 @@ import { memo, useState, VFC } from "react";
 
 import { Item } from "../../../types/Item";
 import ItemInput from "../../atoms/input/ItemInput";
-import ShoppingList from "../../atoms/list/ShoppingList";
+import EditList from "../../atoms/list/EditList";
 
 const initialState: Item[] = [
   {
@@ -39,7 +39,7 @@ export const AddList: VFC<Props> = memo((props) => {
         <InfoOutlineIcon mr={2} mb={1} />
         購入不要なものはチェックをつける
       </Text>
-      <ShoppingList setItems={setItems} items={items} />
+      <EditList setItems={setItems} items={items} />
     </Box>
   );
 });
