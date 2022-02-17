@@ -10,9 +10,11 @@ import {
   Stack,
   Text
 } from "@chakra-ui/react";
+import { EmailIcon } from "@chakra-ui/icons";
+import { LineShareButton, LineIcon, EmailShareButton } from "react-share";
 
 import { Item } from "../../types/Item";
-import { EmailIcon } from "@chakra-ui/icons";
+import { useSendText } from "../../hooks/useSendText";
 
 const items: Item[] = [
   {
@@ -67,12 +69,27 @@ export const ShoppingList: VFC = memo(() => {
           )}
         </Box>
         <Stack direction={["column", "row"]} spacing={4} p={4}>
-          <Button colorScheme="green" boxShadow="lg">
-            LINEで送る
-          </Button>
-          <Button leftIcon={<EmailIcon />} colorScheme="blue" boxShadow="lg">
-            メールで送る
-          </Button>
+          <LineShareButton
+            url="https://k0iou.csb.app/menu_table/shopping_list"
+            title={useSendText(items)}
+          >
+            <Button
+              leftIcon={<LineIcon size={32} round={true} />}
+              colorScheme="green"
+              boxShadow="lg"
+            >
+              LINEで送る
+            </Button>
+          </LineShareButton>
+          <EmailShareButton
+            url="https://k0iou.csb.app/menu_table/shopping_list"
+            subject="買い物リスト"
+            body={useSendText(items)}
+          >
+            <Button leftIcon={<EmailIcon />} colorScheme="blue" boxShadow="lg">
+              メールで送る
+            </Button>
+          </EmailShareButton>
         </Stack>
       </Box>
     </Container>
